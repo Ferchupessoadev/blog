@@ -14,7 +14,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="text-white min-h-screen dark:bg-background-dark bg-background text-text dark:text-text-dark">
         <x-header></x-header>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             <div class="max-w-xl mx-auto sm:px-6 lg:px-8">

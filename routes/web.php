@@ -20,4 +20,5 @@ Route::get('/contacto', [HomeController::class, 'create'])
     ->name('contact');
 
 Route::post('/contacto', [HomeController::class, 'store'])
+    ->middleware('throttle:3,1')
     ->name('contact.store');

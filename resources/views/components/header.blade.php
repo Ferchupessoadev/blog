@@ -1,6 +1,6 @@
 <header
     id="header"
-    class="flex flex-col transition-colors duration-300 justify-between items-center gap-1 w-full text-text-dark px-12 py-2"
+    class="flex flex-col justify-between items-center gap-1 w-full text-text-dark px-10 py-2 dark:bg-background-dark"
 >
     <div class="flex justify-between items-between gap-4 w-full">
         <nav class="flex items-center gap-4 h-16">
@@ -18,13 +18,24 @@
             <ul class="flex items-center gap-5">
                 @auth
                     <li class="relative group" x-data="{ open: false }">
-                        <button x-on:click="open = !open" class="flex items-center gap-2 group-hover:bg-gray-400 p-2 rounded-lg">
-                            <i class="fa-solid fa-user dark:text-white text-gray-700"></i>
-                        </button>
-                        <ul class="absolute top-8 right-0 bg-black rounded-lg w-max" :class="{ 'hidden': !open, 'block': open }">
-                            <li class="w-full flex"><a class="w-full px-4 py-2" href="{{ route('admin.dashboard')}} ">Dashboard</a></li>
-                            <li class="w-full flex"><a class="w-full px-4 py-2" href="{{ route('logout') }}">Cerrar sesion</a></li>
-                        </ul>
+                        <div class="hs-dropdown relative inline-flex z-10">
+                            <button id="hs-dropdown-with-dividers" type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                                <i class="fa-solid fa-user"></i>
+                                <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                            </button>
+                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-dividers">
+                                <div class="p-1 space-y-0.5">
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700" href="{{ route('admin.dashboard') }}">
+                                        Dashboard
+                                    </a>
+                                </div>
+                                <div class="p-1 space-y-0.5">
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700" href="{{ route('logout') }}">
+                                        Cerrar sesion
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 @endauth
                 @guest
