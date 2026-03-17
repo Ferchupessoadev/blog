@@ -47,7 +47,7 @@ class Post extends Model
     public static function getLatestPosts(int $limit = 3): Collection
     {
         return static::query()
-            ->select('id', 'slug', 'title', 'image', 'published_at')
+            ->select('id', 'slug', 'description', 'title', 'image', 'published_at')
             ->orderBy('published_at', 'desc')
             ->limit($limit)
             ->get();

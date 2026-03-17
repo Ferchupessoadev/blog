@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title', 128);
+            $table->string('description', 225);
+            $table->string('image');
             $table->string('slug', 128)->unique();
             $table->longText('content');
-            $table->string('image', 255);
             $table->timestamp('published_at');
+            $table->timestamp('updated_post_at');
             $table->boolean('is_active')->default(true);
 
             $table->timestamps();
