@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
-Route::get('/sobremi', fn() => view('aboutme'))
-    ->name('aboutme');
+Route::get('/proyects', fn() => view('proyects'))
+    ->name('proyects');
 
 Route::get('/articulos', [PostController::class, 'index'])
     ->name('articulos.index');
