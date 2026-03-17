@@ -15,51 +15,59 @@
                 </ul>
             </div>
         @endif
-        <div class="w-full flex flex-col items-center">
-            <form method="POST" action="{{ route('register.store') }}" class="bg-slate-800 shadow-md rounded px-10 py-8 w-1/2">
-                <h1 class="text-3xl font-bold text-center text-white">Registrate</h1>
-                <div class="flex flex-col gap-4 mt-8">
-                    @csrf
-                    @method('POST')
-                    <input type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Nombre"
-                        class="w-full bg-slate-700 text-white px-4 py-2 focus:outline-gray-500 rounded border-none"
-                    >
-                    <input type="text"
-                        name="surname"
-                        id="surname"
-                        placeholder="Apellido"
-                        class="w-full bg-slate-700 text-white px-4 py-2 focus:outline-gray-500 rounded border-none"
-                    >
-                    <input type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Correo"
-                        class="w-full bg-slate-700 text-white px-4 py-2 focus:outline-gray-500 rounded border-none"
-                    >
-                    <input type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Contraseña"
-                        class="w-full bg-slate-700 text-white px-4 py-2 focus:outline-gray-500 rounded border-none"
-                    >
-                    <input type="password"
-                        name="repeat_password"
-                        id="repeat_password"
-                        placeholder="Repetir contraseña"
-                        class="w-full bg-slate-700 text-white px-4 py-2 focus:outline-gray-500 rounded border-none"
-                    >
-                    <div class="flex flex-col items-center px-8 w-full gap-4">
-                        <input type="submit" value="Registrarme" class="bg-slate-700 w-max text-white px-8 py-2 border border-gray-400 rounded">
-                        <p class="text-white">
-                            <span>¿Ya tienes cuenta?,</span>
-                            <a href="{{ route('login') }}" class="w-max text-blue-600 underline"> Inicia sesión</a>
-                        </p>
-                    </div>
+        <div class="min-h-screen bg-slate-950 flex items-center justify-center p-4 md:p-6">
+            <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-10 shadow-2xl">
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-white tracking-tight">Crear cuenta</h1>
+                    <p class="text-slate-400 text-sm mt-1">Únete a la plataforma y comienza a desarrollar.</p>
                 </div>
-            </form>
+
+                <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium text-slate-300 mb-2">Nombre Completo</label>
+                        <input type="text" placeholder="Ej: Juan Pérez"
+                            class="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium text-slate-300 mb-2">Nombre de usuario</label>
+                        <input type="text" placeholder="@usuario"
+                            class="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
+                    </div>
+
+                    <div class="md:col-span-2 flex flex-col">
+                        <label class="text-sm font-medium text-slate-300 mb-2">Correo Electrónico</label>
+                        <input type="email" placeholder="dev@ejemplo.com"
+                            class="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium text-slate-300 mb-2">Contraseña</label>
+                        <input type="password" placeholder="••••••••"
+                            class="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label class="text-sm font-medium text-slate-300 mb-2">Confirmar Contraseña</label>
+                        <input type="password" placeholder="••••••••"
+                            class="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
+                    </div>
+
+                    <div class="md:col-span-2 mt-4">
+                        <button type="submit"
+                            class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-lg shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.98]">
+                            Registrarme ahora
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-8 pt-6 border-t border-slate-800 text-center">
+                    <p class="text-slate-400 text-sm">
+                        ¿Ya tienes una cuenta? <a href={{ route('login') }} class="text-emerald-400 hover:text-emerald-300 font-medium transition-colors">Inicia sesión</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </main>
 @endsection
