@@ -44,3 +44,14 @@
 .hero_title {
     text-shadow: 0 0 12px rgba(0, 200, 255, 0.4);
 }
+
+/* En tu app.css o dentro de un bloque <style> */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

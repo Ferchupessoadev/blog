@@ -1,53 +1,90 @@
 @extends('layouts.app')
 
 @section('title')
-    FerchuDev - Contactame
+    Contactame
 @endsection
 
 @section('content')
-    <div class="flex flex-col items-center justify-center h-[calc(100vh-64px)] my-16">
-        <h1 class="text-3xl text-primary-light dark:text-primary-dark px-5">Contactame</h1>
-        <form class="flex flex-col gap-4 mt-4 items-center w-1/2 py-2 px-4" method="post" action="{{ route('contact.store') }}">
-            @method('POST')
-            <div class="flex flex-col w-full">
-                <x-input-contact name="name" placeholder="Nombre" value="{{ old('name') }}"></x-input-contact>
-                @error('name')
-                    <p class="text-red-400 text-sm">{{ $message }}</p>
-                @enderror
+    <section class="mt-20">
+        <div class="mx-auto w-max bg-[#0b1220] border border-cyan-500/10 rounded-2xl p-8 relative overflow-hidden">
+
+            <!-- Glow -->
+            <div class="absolute inset-0 opacity-20 blur-3xl bg-cyan-500/10"></div>
+
+            <div class="relative z-10 max-w-3xl mx-auto">
+
+                <!-- Title -->
+                <h2 class="text-2xl md:text-3xl font-semibold text-white text-center mb-3">
+                    Contacto
+                </h2>
+
+                <p class="text-gray-400 text-sm md:text-base text-center mb-8">
+                    ¿Tenés una idea, proyecto o querés trabajar conmigo? Mandame un mensaje.
+                </p>
+
+                <!-- Terminal touch -->
+                <div class="text-green-400 text-xs text-center mb-6">
+                    $ send-message --contact<span class="animate-pulse">_</span>
+                </div>
+
+                <!-- Form -->
+                <form action="/contact" method="POST" class="space-y-5">
+                    @csrf
+
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Nombre</label>
+                        <input 
+                            type="text" 
+                            name="name"
+                            required
+                            placeholder="Tu nombre"
+                            class="w-full bg-[#020617] border border-cyan-500/10 rounded-lg px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition"
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Email</label>
+                        <input 
+                            type="email" 
+                            name="email"
+                            required
+                            placeholder="tu@email.com"
+                            class="w-full bg-[#020617] border border-cyan-500/10 rounded-lg px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition"
+                        >
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Mensaje</label>
+                        <textarea 
+                            name="message"
+                            rows="5"
+                            required
+                            placeholder="Contame sobre tu proyecto..."
+                            class="w-full bg-[#020617] border border-cyan-500/10 rounded-lg px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition resize-none"
+                        ></textarea>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="text-center">
+                        <button 
+                            type="submit"
+                            class="bg-cyan-500 hover:bg-cyan-400 text-black font-medium px-6 py-2 rounded-lg text-sm transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/30"
+                        >
+                            Enviar mensaje
+                        </button>
+                    </div>
+
+                    <!-- Note -->
+                    <p class="text-xs text-gray-500 text-center">
+                        Respondo generalmente dentro de 24 horas.
+                    </p>
+
+                </form>
+
             </div>
-            <div class="flex flex-col w-full">
-                <x-input-contact name="email" placeholder="Email" value="{{ old('email') }}"></x-input-contact>
-                @error('email')
-                    <p class="text-red-400 text-sm">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="flex flex-col w-full">
-                <textarea
-                    class="p-2 w-full h-40 bg-slate-800 rounded-md resize-none focus:outline-none focus:border-slate-400 border-2 border-transparent"
-                    min="1"
-                    max="255"
-                    name="message"
-                    placeholder="Mensaje"
-                >{{ old('message') }}</textarea>
-                @error('message')
-                    <p class="text-red-400 text-sm">{{ $message }}</p>
-                @enderror
-            </div>
-            @csrf
-            <x-buttonPost>Enviar</x-buttonPost>
-        </form>
-        <div class="flex w-1/2 justify-center items-center gap-3">
-            <hr class="w-1/4">
-            <p>o</p>
-            <hr class="w-1/4">
         </div>
-        <div class="flex gap-3 mt-5">
-            <a class="px-5" href="https://www.linkedin.com/in/ferchudev/" target="_blank">
-                <x-linkedin class="size-8"></x-linkedin>
-            </a>
-            <a class="px-5" href="https://github.com/Ferchupessoadev" target="_blank">
-                <x-github class="size-8 dark:text-white text-black"></x-github>
-            </a>
-        </div>
-    </div>
+    </section>
 @endsection
